@@ -1,3 +1,6 @@
+from Plataforma.Utils import Serializador
+
+
 class LimiteDeProyectosError(Exception):
     pass
 
@@ -6,7 +9,7 @@ class ObjectoUsuarioInvalidoError(Exception):
     pass
 
 
-class Usuario:
+class Usuario(Serializador):
     def __init__(self, login: str, nombre: str, apellidos: str, puntuacion: float = 5, numero_trabajos: int = 0, proyectos: list = []):
         self.__login = login
         self.__nombre = nombre
@@ -46,17 +49,18 @@ class Usuario:
     def proyectos(self):
         return ', '.join(self.__proyectos)
 
-    def serializar(self):
-        """
-        Serializa el objecto Usuario
-        i.e.: `john123;John;Smith;5.7;10;adi1,contoso2`
-
-        :return: Una string con el objeto usuario serializado. Las propiedades separadas por `;` y los elementos de las
-        listas separadas por `,`.
-        """
-        # Serializar proyectos
-        proyectos = ','.join(self.__proyectos)
-        return f'{self.__login};{self.__nombre};{self.__apellidos};{self.__puntuacion};{self.__numero_trabajos};{proyectos}'
+    # def serializar(self):
+    #     """
+    #     Serializa el objecto Usuario
+    #     i.e.: `john123;John;Smith;5.7;10;adi1,contoso2`
+    #
+    #     :return: Una string con el objeto usuario serializado. Las propiedades separadas por `;` y los elementos de las
+    #     listas separadas por `,`.
+    #     """
+    #     print(super().serializar())
+    #     # Serializar proyectos
+    #     proyectos = ','.join(self.__proyectos)
+    #     return f'{self.__login};{self.__nombre};{self.__apellidos};{self.__puntuacion};{self.__numero_trabajos};{proyectos}'
 
     @staticmethod
     def deserializar(usuario_str: str):
