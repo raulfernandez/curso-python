@@ -1,0 +1,6 @@
+CocktailWaiter1:18:0:cubalibre,manhattan,zombie
+CocktailWaiter2:18:0:manhattan
+CocktailWaiter3:18:0:margarita,mojito
+Waiter1:18:0:
+Waiter2:18:0:
+Waiter3:18:0:
