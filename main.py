@@ -9,6 +9,7 @@ import week2day3
 import week2day4
 import week3day1
 from Plataforma.Plataforma import Plataforma
+from Plataforma.Usuario import Usuario
 
 
 def main():

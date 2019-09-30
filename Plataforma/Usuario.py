@@ -49,29 +49,7 @@ class Usuario(Serializador):
     def proyectos(self):
         return ', '.join(self.__proyectos)
 
-    # def serializar(self):
-    #     """
-    #     Serializa el objecto Usuario
-    #     i.e.: `john123;John;Smith;5.7;10;adi1,contoso2`
-    #
-    #     :return: Una string con el objeto usuario serializado. Las propiedades separadas por `;` y los elementos de las
-    #     listas separadas por `,`.
-    #     """
-    #     print(super().serializar())
-    #     # Serializar proyectos
-    #     proyectos = ','.join(self.__proyectos)
-    #     return f'{self.__login};{self.__nombre};{self.__apellidos};{self.__puntuacion};{self.__numero_trabajos};{proyectos}'
-
-    @staticmethod
-    def deserializar(usuario_str: str):
-        """
-        Deserializa una string y devuelve un objecto Usuario.
-
-        :param usuario_str: String representando un usuario. i.e.: `john123;John;Smith;5.7;10;adi1,contoso2`
-        :return:Usuario Devuelve un objecto Usuario
-        """
-        props = usuario_str.split(';')
-        if len(props) == 6:
-            return Usuario(props[0], props[1], props[2], float(props[3]), int(props[4]), props[5].split(','))
-        else:
-            raise ObjectoUsuarioInvalidoError
+    @classmethod
+    def deserializar(cls, serialized_str: str):
+        init_str = super().deserializar(serialized_str=serialized_str)
+        return eval(init_str)
