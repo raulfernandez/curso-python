@@ -99,6 +99,11 @@ def ejercicio2():
     print_posts(find_all_post(first_random_user(users), posts))
 
 
+def get_posts():
+    data = requests.request('GET', 'https://jsonplaceholder.typicode.com/posts')
+    return data.json()
+
+
 def get_post_comments(post_id):
     data = requests.request('GET', f'https://jsonplaceholder.typicode.com/posts/{post_id}/comments')
     return data.json()
@@ -116,6 +121,20 @@ def get_id_from_longest_post(posts):
     return post_id
 
 
+def get_id_from_max_post_words(posts):
+    max_words = 0
+    post_id = None
+
+    for post in posts:
+        post_words = len(post['body'].replace('\n', ' ').split(' '))
+        if max_words < post_words:
+            max_words = post_words
+            post_id = post['id']
+
+    return post_id
+
+
 def main():
-    posts = load_json('posts.json')
+    posts = get_posts()
+    print(get_id_from_max_post_words(posts))
     print(get_id_from_longest_post(posts), get_post_comments(get_id_from_longest_post(posts)))
