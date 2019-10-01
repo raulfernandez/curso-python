@@ -10,7 +10,9 @@ class ObjectoUsuarioInvalidoError(Exception):
 
 
 class Usuario(Serializador):
-    def __init__(self, login: str, nombre: str, apellidos: str, puntuacion: float = 5, numero_trabajos: int = 0, proyectos: list = []):
+    def __init__(self, login: str, nombre: str, apellidos: str, puntuacion: float = 5,
+                 numero_trabajos: int = 0, proyectos: list = []):
+        super().__init__()
         self.__login = login
         self.__nombre = nombre
         self.__apellidos = apellidos
@@ -53,3 +55,6 @@ class Usuario(Serializador):
     def deserializar(cls, serialized_str: str):
         init_str = super().deserializar(serialized_str=serialized_str)
         return eval(init_str)
+
+    def to_json(self):
+        return super()

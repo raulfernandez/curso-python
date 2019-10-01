@@ -1,4 +1,5 @@
 import re
+import json
 from importlib import import_module
 
 
@@ -70,3 +71,13 @@ class Serializador:
 
         class_init = f'{class_name}({class_init_params[0:-1]})'
         return class_init
+
+
+class JSONSerializador:
+    @staticmethod
+    def from_json(obj, data):
+        obj.__dict__ = json.loads(data)
+        return obj
+
+    def to_json(self) -> str:
+        return json.dumps(self.__dict__)

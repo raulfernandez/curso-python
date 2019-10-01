@@ -8,6 +8,7 @@ import week2day2
 import week2day3
 import week2day4
 import week3day1
+import week3day2
 from Plataforma.Plataforma import Plataforma
 from Plataforma.Usuario import Usuario
 
@@ -21,7 +22,8 @@ def main():
     # week2day1bar.main()
     # week2day1.main()
     # week2day3.main()
-    week3day1.main()
+    # week3day1.main()
+    week3day2.main()
 
 
 if __name__ == "__main__":
