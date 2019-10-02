@@ -6,5 +6,5 @@ setup(
       description='Fooooooo',
       author='rf',
       packages=['Plataforma', 'utils'],
-      install_requires=['requests', 'html2text']
+      install_requires=['requests', 'html2text', 'snakecase']
       )

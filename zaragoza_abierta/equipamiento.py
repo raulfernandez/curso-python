@@ -3,6 +3,28 @@
 """
 
 import requests
+import snakecase
+import json
+
+
+class Equipment:
+    def __init__(self):
+        self.same_as = None
+        self.id = None
+        self.title = None
+        self.servicios = None
+        self.last_updated = None
+        self.category = None
+        self.institucion = None
+        self.tipo_entidad = None
+        self.portal = None
+        self.calle = None
+        self.geometry = None
+        self.type = None
+
+    def load(self, data):
+        snake_data = {snakecase.convert(key): value for key, value in data}
+        self.__dict__ = json.loads(snake_data)
 
 
 def get_equipments():
@@ -11,6 +33,7 @@ def get_equipments():
 
 
 def get_equipment_categories(equipments: list):
+    # From a list of equipments, extract the categories in a dict, so we don't repeat categories, then sort them
     return sorted([cat for cat in {e['category'][0]['title'] for e in equipments if e.get('category') is not None}])
 
 
