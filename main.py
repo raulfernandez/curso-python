@@ -9,8 +9,11 @@ import week2day3
 import week2day4
 import week3day1
 import week3day2
+import week3day3
+import week3day4
 from Plataforma.Plataforma import Plataforma
 from Plataforma.Usuario import Usuario
+import doctest
 
 
 def main():
@@ -23,8 +26,11 @@ def main():
     # week2day1.main()
     # week2day3.main()
     # week3day1.main()
-    week3day2.main()
+    # week3day2.main()
+    week3day3.main()
+    # week3day4.main()
 
 
 if __name__ == "__main__":
     main()
+

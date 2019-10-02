@@ -10,10 +10,11 @@ class ObjectoUsuarioInvalidoError(Exception):
 
 
 class Usuario(Serializador):
-    def __init__(self, login: str, nombre: str, apellidos: str, puntuacion: float = 5,
+    def __init__(self, login: str, password: str, nombre: str, apellidos: str, puntuacion: float = 5,
                  numero_trabajos: int = 0, proyectos: list = []):
         super().__init__()
         self.__login = login
+        self.__password = password
         self.__nombre = nombre
         self.__apellidos = apellidos
         self.__puntuacion = puntuacion
